@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Velocity.JS</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,900);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, 
+body {  
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto';
+}
+ 
+html {
+  background: #222;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin: .75rem;
+}
+
+.fl-right {
+  float: right;
+}
+
+.fl-left {
+  float: left;
+}
+
+body {
+  font-size: 1.5em;
+  color: #222;
+  background: #fff;
+  height: .25rem;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  width: 0%;
+}
+
+h1 {
+  font-weight: 900;
+  margin: .5rem 0 1.5rem;
+  padding-bottom: .5rem;
+  font-size: 3em;
+  border-bottom: .25rem solid #222;
+}
+
+.wrap {
+  max-width: 60%;
+  min-width: 61.25rem;
+  margin: 2rem auto 0;
+  opacity: 0;
+}
+ 
+@media (max-width: 63rem) {
+  html {
+    font-size: 13px;
+  }
+  
+  .wrap {
+    max-width: none;
+    min-width: 100%;
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 45rem) {
+  img {
+    width: 100%;
+    margin: .5rem 0;
+  }
+  
+  .fl-left,
+  .fl-right {
+    display: block;
+    float: none;
+  }
+}
+.counter p{
+    position: fixed;
+    top: 50%;left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+}
+    </style>
+</head>
+<body>
+        <div class="counter" style="color:aliceblue;">
+            <p id="20">20%</p><p id="30">30%</p><p id="50">50%</p><p id="100">100%</p>
+        </div>
+        <div class="wrap">
+                <h1>This is a title</h1>
+                <img class="fl-left" src="http://fillmurray.com/290/290" alt="" />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum vel, voluptates veritatis cumque quia omnis quas provident labore error deserunt, esse, voluptatum hic dolorum accusamus illum dolores, expedita tempora nisi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum saepe, animi dolores qui praesentium excepturi neque reiciendis vero. Quam possimus harum ab porro odio ratione perspiciatis dolor, dolores delectus ad!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus quod ea, porro delectus ratione maiores officia, suscipit modi. Tempore! Temporibus praesentium deserunt, repellat quidem esse provident. Aut voluptas repudiandae labore, reprehenderit excepturi error ex, veniam odit pariatur commodi cumque.</p>
+                <img class="fl-right" src="http://fillmurray.com/305/305" alt="" />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut consequatur eaque velit incidunt ex vero debitis. Possimus molestiae inventore, unde sit in praesentium autem. Pariatur maiores odit omnis cumque quod.Nobis officia ipsum inventore culpa, accusantium, quisquam, sed voluptatem perspiciatis placeat quibusdam laudantium maxime? Culpa, a sint obcaecati fugiat saepe, tempora doloribus et voluptatem vitae magnam eos illum sunt cum.</p>
+                <p>Numquam cumque inventore doloribus molestias maiores laboriosam nisi architecto laborum ipsa cum. Voluptate perspiciatis officiis deleniti iusto, dignissimos dolore vero nam quos dolores quas deserunt incidunt, consectetur aliquam consequatur inventore?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita ad dolor pariatur, iure porro asperiores dolorum. Aspernatur labore non corporis ipsa perspiciatis praesentium, sunt id explicabo dolor, voluptatum esse laboriosam.Repudiandae nesciunt fuga vero iure dolorum repellendus ab error obcaecati. Molestias nesciunt nostrum ratione vero quia ut ipsam mollitia tempore blanditiis doloremque accusamus, eius ea quas necessitatibus odit, autem repellat!</p>
+        </div>
+
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.min.js'></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.ui.js'></script>
+            <script>
+        var $body = $('body');
+        var $20 = $('#20');
+        var $30 = $('#30');
+        var $50 = $('#50');
+        var $100 = $('#100');
+        var loading = [
+            { elements: $body, properties: { width: '20%' } },
+            { elements: $20 , properties:{opacity:1} , options:{sequenceQueue:false}},
+            { elements: $30 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $50 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $100 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $body, properties: { width: '30%' } },
+            { elements: $20 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $30 , properties:{opacity:1} , options:{sequenceQueue:false}},
+            { elements: $50 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $100 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $body, properties: { width: '50%' } },
+            { elements: $20 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $30 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $50 , properties:{opacity:1} , options:{sequenceQueue:false}},
+            { elements: $100 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $body, properties: { width: '100%' } },
+            { elements: $20 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $30 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $50 , properties:{opacity:0} , options:{sequenceQueue:false}},
+            { elements: $100 , properties:{opacity:1} , options:{sequenceQueue:false}},
+            { elements: $body, properties: { height: '100%' },
+             options: { 
+            complete: function () { 
+                $('.wrap').velocity( 'transition.slideUpIn' );
+                $('img').velocity( 'transition.flipYIn' );
+                $('html').css({ background: '#fff' });
+            }
+            }
+        }
+        ]; 
+
+        $.Velocity.RunSequence(loading);
+    </script>
+</body>
+</html>
